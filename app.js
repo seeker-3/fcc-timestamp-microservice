@@ -26,7 +26,7 @@ app.get('/', (req, res) => {
 
 app.get(/^\/\S/, (req, res) => {
 	const data = URL.parse(req.url).pathname.slice(1);
-	var date = new Date(isNaN(data)? data: +data);
+	var date = new Date(isNaN(data)? data: +data * 1000);
 
 	res.json(date.toString() !== 'Invalid Date'?
 		{
