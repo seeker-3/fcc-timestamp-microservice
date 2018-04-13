@@ -1,10 +1,10 @@
-const log = console.log;
-const port = 2000;
-const URL = require('url');
+const log        = console.log;
+const port       = 2000;
+const URL 		 = require('url');
+const express    = require('express');
+const app        =  express();
 
-
-const express = require('express');
-const app =  express();
+app.set('view engine', 'pug');
 app.listen(port);
 
 const monthNames = Object.freeze([
@@ -19,8 +19,12 @@ function dateString (dateObj) {
 		' ' + dateObj.getDate() +
 		', ' + dateObj.getFullYear();
 }
+app.get('/', (req, res) => {
+	res.render('form');
+	res.end();
+});
 
-app.get(/^\//, (req, res) => {
+app.get(/^\/\S/, (req, res) => {
 	const data = URL.parse(req.url).pathname.slice(1);
 	var date = new Date(isNaN(data)? data: +data);
 

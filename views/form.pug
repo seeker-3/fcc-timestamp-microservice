@@ -1,0 +1,14 @@
+doctype html
+html
+	head
+		title Timestamp Microservice
+		style
+			include style.css
+	body
+		h3 enter a date or a unix time
+		p ex natural: 1Jan2020, 1-1-20, 1january2020
+		p ex unix: 5000000
+		input#data(name="data")
+		button#btn(type='submit') submit
+		script
+			include script.js
